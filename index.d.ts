@@ -1,8 +1,9 @@
+import { NativeParseTypes } from "./src/types/native-parse-types";
 
 declare global {
-    var webviewBridge: {
-        setLoading: (show: string) => void
+    interface Window {
+        __WEB_VIEW_BRIDGE__: NativeParseTypes
     }
 }
 
-export {};
+export { };
