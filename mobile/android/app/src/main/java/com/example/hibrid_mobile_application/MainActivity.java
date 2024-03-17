@@ -9,8 +9,6 @@ import android.view.View;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
-import com.example.hibrid_mobile_application.R;
-
 import io.github.cdimascio.dotenv.Dotenv;
 
 
@@ -49,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
         webView.getSettings().setJavaScriptEnabled(true);
         webView.getSettings().setDatabaseEnabled(true);
         webView.getSettings().setDomStorageEnabled(true);
-        webView.addJavascriptInterface(new BridgeJavascript(this), "webviewBridge");
+        webView.addJavascriptInterface(new WebiewBridge(this), "__WEB_VIEW_BRIDGE__");
 
 
         Dotenv dotenv = Dotenv.configure()
@@ -58,7 +56,6 @@ public class MainActivity extends AppCompatActivity {
         webView.loadUrl(dotenv.get("DEV_HOST"));
 
     }
-
 
 
     @Override
