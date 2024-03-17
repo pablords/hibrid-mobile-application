@@ -1,24 +1,56 @@
 import React from 'react';
+import { AndroidJSInterface } from "./interfaces/android-js-interface"
 
+export function App() {
 
-function App() {
+  const androidJSInterface = new AndroidJSInterface()
+
   const handleLoading = () => {
-    webviewBridge.setLoading("true")
+    androidJSInterface.setLoading(true)
     setTimeout(() => {
-      webviewBridge.setLoading("false")
-    }, 2000)
+      androidJSInterface.setLoading(false)
+    }, 1000)
+  }
+
+  const handleCamera = () => {
+    const cameraIsAvaiable = androidJSInterface.checkCameraHardware()
+    if (!cameraIsAvaiable) {
+      console.log("Camera não disponivel no dispositivo")
+      return
+    }
+    androidJSInterface.openCamera()
   }
 
 
   return (
     <>
-      <span>
-        LOADING
-      </span>
       <br />
-      <button style={{ width: "100%", height: 150, display: 'flex', justifyContent: "center", alignItems: "center" }} onClick={handleLoading}>SET-LOADING</button>
+      <button style={
+        {
+          width: "100%",
+          height: 50,
+          display: 'flex',
+          justifyContent: "center",
+          alignItems: "center"
+        }
+      }
+        onClick={handleLoading}>SET-LOADING</button>
+
+      <br />
+      <button style={
+        {
+          width: "100%",
+          height: 50,
+          display: 'flex',
+          justifyContent: "center",
+          alignItems: "center"
+        }
+      }
+        onClick={handleCamera}>CAMERA</button>
     </>
+
+
   );
 }
 
-export default App;
+
