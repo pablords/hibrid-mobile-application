@@ -2,7 +2,7 @@ import { parseToBoolean, parseToString } from "../utils/parse";
 import { JSInterface } from "./js.interface";
 
 // Implementação para Android
-export class AndroidJSInterface implements JSInterface {
+export class AndroidJSInterface extends JSInterface {
     checkCameraHardware(): boolean {
        const nativeResponse = window.__ANDROID_HANDLER__.checkCameraHardware()
        return parseToBoolean(nativeResponse)
@@ -12,6 +12,9 @@ export class AndroidJSInterface implements JSInterface {
     }
     openCamera(): void {
         window.__ANDROID_HANDLER__.openCamera()
+    }
+    activePlatform(): boolean {
+        return Boolean(window.__ANDROID_HANDLER__)
     }
     
 }

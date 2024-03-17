@@ -1,14 +1,19 @@
+import { parseToBoolean, parseToString } from "../utils/parse";
 import { JSInterface } from "./js.interface";
 
 // Implementação para iOS
-export class iOSJSInterface implements JSInterface {
+export class iOSJSInterface extends JSInterface {
     checkCameraHardware(): boolean {
-        throw new Error("Method not implemented.");
+        const nativeResponse = window.webkit.messageHandlers.checkCameraHardware.postMessage("")
+        return parseToBoolean(nativeResponse)
     }
     setLoading(show: boolean): void {
-        throw new Error("Method not implemented.");
+        window.webkit.messageHandlers.setLoading.postMessage(parseToString(show))
     }
     openCamera(): void {
-        // Lógica para abrir a câmera no iOS
+        window.webkit.messageHandlers.openCamera.postMessage("")
+    }
+    activePlatform(): boolean {
+        return Boolean(window.webkit)
     }
 }

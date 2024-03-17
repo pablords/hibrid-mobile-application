@@ -1,25 +1,39 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { AndroidJSInterface } from "./interfaces/android-js-interface"
+import { iOSJSInterface } from './interfaces/ios-js-interface';
 
 export function App() {
 
   const androidJSInterface = new AndroidJSInterface()
+  const iosJSInterface = new iOSJSInterface()
 
   const handleLoading = () => {
-    androidJSInterface.setLoading(true)
-    setTimeout(() => {
-      androidJSInterface.setLoading(false)
-    }, 1000)
+    if (androidJSInterface.activePlatform()) {
+      androidJSInterface.setLoading(true)
+      setTimeout(() => {
+        androidJSInterface.setLoading(false)
+      }, 1000)
+    } else if (iosJSInterface.activePlatform()) {
+      iosJSInterface.setLoading(true)
+      setTimeout(() => {
+        iosJSInterface.setLoading(false)
+      }, 1000)
+    }
+
   }
 
   const handleCamera = () => {
-    const cameraIsAvaiable = androidJSInterface.checkCameraHardware()
-    if (!cameraIsAvaiable) {
-      console.log("Camera não disponivel no dispositivo")
-      return
+    if (androidJSInterface.activePlatform()) {
+      const cameraIsAvaiable = androidJSInterface.checkCameraHardware()
+      if (!cameraIsAvaiable) {
+        return
+      }
+      androidJSInterface.openCamera()
+    } else if (iosJSInterface.activePlatform()) {
+      iosJSInterface.openCamera()
     }
-    androidJSInterface.openCamera()
   }
+
 
 
   return (
