@@ -1,25 +1,24 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+
+
 
 function App() {
+  const handleLoading = () => {
+    FrameworkBrasilAndroidHandler.loading("true")
+    setTimeout(() => {
+      FrameworkBrasilAndroidHandler.loading("false")
+    }, 2000)
+  }
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <span>
+        LOADING
+      </span>
+      <br />
+      <button style={{ width: "100%", height: 150, display: 'flex', justifyContent: "center", alignItems: "center" }} onClick={handleLoading}>SET-LOADING</button>
+    </>
   );
 }
 
