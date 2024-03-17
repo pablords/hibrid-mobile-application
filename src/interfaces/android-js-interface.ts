@@ -4,14 +4,14 @@ import { JSInterface } from "./js.interface";
 // Implementação para Android
 export class AndroidJSInterface implements JSInterface {
     checkCameraHardware(): boolean {
-       const nativeResponse = window.__WEB_VIEW_BRIDGE__.checkCameraHardware()
+       const nativeResponse = window.__ANDROID_HANDLER__.checkCameraHardware()
        return parseToBoolean(nativeResponse)
     }
     setLoading(show: boolean): void {
-        window.__WEB_VIEW_BRIDGE__.setLoading(parseToString(show))
+        window.__ANDROID_HANDLER__.setLoading(parseToString(show))
     }
     openCamera(): void {
-        window.__WEB_VIEW_BRIDGE__.openCamera()
+        window.__ANDROID_HANDLER__.openCamera()
     }
     
 }

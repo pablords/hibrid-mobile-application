@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
         webView.getSettings().setJavaScriptEnabled(true);
         webView.getSettings().setDatabaseEnabled(true);
         webView.getSettings().setDomStorageEnabled(true);
-        webView.addJavascriptInterface(new WebiewBridge(this), "__WEB_VIEW_BRIDGE__");
+        webView.addJavascriptInterface(new WebiewBridge(this), "__ANDROID_HANDLER__");
 
 
         Dotenv dotenv = Dotenv.configure()

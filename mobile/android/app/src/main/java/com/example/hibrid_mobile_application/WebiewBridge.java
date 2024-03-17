@@ -1,6 +1,7 @@
 package com.example.hibrid_mobile_application;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -16,7 +17,7 @@ import androidx.core.content.ContextCompat;
 
 public class WebiewBridge {
     Context bridgeContext;
-    static final String TAG = "JSinterface";
+    static final String TAG = "WebiewBridge";
     ProgressDialog progressDialog;
     private WebView webView;
 
@@ -27,7 +28,7 @@ public class WebiewBridge {
 
     @JavascriptInterface
     public void setLoading(String show) throws Exception{
-        Log.d(TAG + "- loading", show);
+        Log.d(TAG + " - loading", show);
         if(show.equals("true")){
             this.progressDialog = new ProgressDialog(this.bridgeContext, R.style.VivoDialogStyle);
             progressDialog.setTitle("Aguarde");
@@ -38,8 +39,10 @@ public class WebiewBridge {
         }
     }
 
+    @SuppressLint("LongLogTag")
     @JavascriptInterface
     public String checkCameraHardware() throws Exception {
+        Log.d(TAG, " - checkCameraHardware");
         if (ContextCompat.checkSelfPermission(this.bridgeContext, Manifest.permission.CAMERA)
                 != PackageManager.PERMISSION_GRANTED)
         {
@@ -49,12 +52,14 @@ public class WebiewBridge {
                     new String[] { Manifest.permission.CAMERA },
                     100);
         }
+        Log.d(TAG + " - checkCameraHardware", "camera is avaiable");
         return "true";
 
     }
-
+    @SuppressLint("LongLogTag")
     @JavascriptInterface
     public void openCamera() throws Exception{
+        Log.d(TAG, " - openCamera");
         Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         this.bridgeContext.startActivity(intent);
     }
