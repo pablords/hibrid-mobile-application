@@ -1,4 +1,4 @@
-package com.example.framework_brasil_dev;
+package com.example.hibrid_mobile_application;
 
 import org.junit.Test;
 

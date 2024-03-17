@@ -1,7 +1,7 @@
 
 declare global {
-    var FrameworkBrasilAndroidHandler: {
-        loading: (show: string) => void
+    var webviewBridge: {
+        setLoading: (show: string) => void
     }
 }
 

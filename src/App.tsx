@@ -1,12 +1,11 @@
 import React from 'react';
 
 
-
 function App() {
   const handleLoading = () => {
-    FrameworkBrasilAndroidHandler.loading("true")
+    webviewBridge.setLoading("true")
     setTimeout(() => {
-      FrameworkBrasilAndroidHandler.loading("false")
+      webviewBridge.setLoading("false")
     }, 2000)
   }
 

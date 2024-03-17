@@ -3,11 +3,11 @@ plugins {
 }
 
 android {
-    namespace 'com.example.framework_brasil_dev'
+    namespace 'com.example.hibrid_mobile_application'
     compileSdk 32
 
     defaultConfig {
-        applicationId "com.example.framework_brasil_dev"
+        applicationId "com.example.hibrid_mobile_application"
         minSdk 21
         targetSdk 32
         versionCode 1

@@ -1,4 +1,4 @@
-package com.example.framework_brasil_dev;
+package com.example.hibrid_mobile_application;
 
 import android.content.Context;
 
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
     public void useAppContext() {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
-        assertEquals("com.example.framework_brasil_dev", appContext.getPackageName());
+        assertEquals("com.example.hibrid_mobile_application", appContext.getPackageName());
     }
 }

@@ -1,17 +1,15 @@
-package com.example.framework_brasil_dev;
+package com.example.hibrid_mobile_application;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
 import android.graphics.Bitmap;
-import android.nfc.Tag;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
-import android.webkit.JavascriptInterface;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
-import android.widget.ProgressBar;
+
+import com.example.hibrid_mobile_application.R;
 
 import io.github.cdimascio.dotenv.Dotenv;
 
@@ -51,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
         webView.getSettings().setJavaScriptEnabled(true);
         webView.getSettings().setDatabaseEnabled(true);
         webView.getSettings().setDomStorageEnabled(true);
-        webView.addJavascriptInterface(new BridgeJavascript(this), "FrameworkBrasilAndroidHandler");
+        webView.addJavascriptInterface(new BridgeJavascript(this), "webviewBridge");
 
 
         Dotenv dotenv = Dotenv.configure()
